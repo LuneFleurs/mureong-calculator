@@ -17,7 +17,7 @@
 import os
 from dotenv import dotenv_values
 
-config = dotenv_values("Character.roperty")
+config = dotenv_values("Character.property")
 
 ################################################
 # 무기상수 너클
@@ -113,7 +113,7 @@ def CalcLineDamage(statAtt1, statAtt2, damage, bossDamage, finalDamage, critical
     return lineDamage
 
   
-def CalcMureong(lineDamage, weaponType):
+def CalcMureong(lineDamage, isGenesis: bool):
     lineDamage = lineDamage / 100000000
     floor = 49
     if 1.5 < lineDamage :
@@ -136,27 +136,27 @@ def CalcMureong(lineDamage, weaponType):
         floor = 58
     elif 7.0 < lineDamage :
         floor = 59
-    elif 8.3 < lineDamage or (7.8 < lineDamage and weaponType == True):
+    elif 8.3 < lineDamage or (7.8 < lineDamage and isGenesis):
         floor = 60
-    elif 9.0 < lineDamage or (8.6 < lineDamage and weaponType == True):
+    elif 9.0 < lineDamage or (8.6 < lineDamage and isGenesis):
         floor = 61
-    elif 10.5 < lineDamage or (10.0 < lineDamage and weaponType == True):
+    elif 10.5 < lineDamage or (10.0 < lineDamage and isGenesis):
         floor = 62
-    elif 11.8 < lineDamage or (11.0 < lineDamage and weaponType == True):
+    elif 11.8 < lineDamage or (11.0 < lineDamage and isGenesis):
         floor = 63
-    elif 13.0 < lineDamage or (12.2 < lineDamage and weaponType == True):
+    elif 13.0 < lineDamage or (12.2 < lineDamage and isGenesis):
         floor = 64
-    elif 14.0 < lineDamage or (13.0 < lineDamage and weaponType == True):
+    elif 14.0 < lineDamage or (13.0 < lineDamage and isGenesis):
         floor = 65
-    elif 14.8 < lineDamage and weaponType == True:
+    elif 14.8 < lineDamage and isGenesis:
         floor = 66
-    elif 15.8 < lineDamage and weaponType == True:
+    elif 15.8 < lineDamage and isGenesis:
         floor = 67
-    elif 16.5 < lineDamage and weaponType == True:
+    elif 16.5 < lineDamage and isGenesis:
         floor = 68
-    elif 18.0 < lineDamage and weaponType == True:
+    elif 18.0 < lineDamage and isGenesis:
         floor = 69
-    elif 21.0 < lineDamage and weaponType == True:
+    elif 21.0 < lineDamage and isGenesis:
         floor = 70
 
     return str(floor) + '이하'
