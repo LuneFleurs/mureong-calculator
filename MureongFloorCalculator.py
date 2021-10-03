@@ -12,8 +12,6 @@
 #
 # 데미지 = 스공 / 데미지% / 최종데미지% * (보공+데미지 %) * 크뎀보정 * 방무보정 * 스킬퍼뎀 * 레벨뻥 * 코강
 #
-#
-# Thanks to 이샛기, 엘크라우치, 하요하이룽
 ################################################
 
 import os
@@ -45,9 +43,9 @@ def str2bool(v):
 WEAPONETYPE = str2bool(config['GenesisWeapon'])
 
 
-###############################################
-###############계산식 수정금지#################
-###############################################
+#########
+# 계산식 
+#########
 
 # 옵드, 정결극, 집속, 오쓰, 메여축, 귀문진 등 추가 버프 고려하지 않음
 # 약점 간파 25% 적용하지 않음
@@ -108,26 +106,13 @@ def VSkillCoreLevel (level):
 def AbilityDamage (percent):
     return percent
 
-
-
-# 스공 = [(주스텟*4+부스텟)/100]*(총 공/마)*[(100+데미지%)/100]*
-#           [(100+최종 데미지)/100]*[(100+공/마%)/100]*무기상수*직업상수
-
-def CalcTotalAttack (statAttack, mainStat, subStat, damage, finalDamage, attackPercent):
-    attack = statAttack / (((mainStat*4 + subStat)/100) * ((100+damage) / 100) * ((100 + finalDamage)/100) * ((100+attackPercent)/100) * WEAPONRATE * JOBCORRECTION)
-
-    return attack
-
-def CalcStatAttack (mainStat, subStat, attack, damage, finalDamage, attackPercent):
-    statAttack = ((mainStat*4 + subStat)/100) * attack * ((100+damage) / 100) * ((100 + finalDamage)/100) * ((100+attackPercent)/100) * WEAPONRATE * JOBCORRECTION
-
-    return statAttack
-
+  
 def CalcLineDamage(statAtt1, statAtt2, damage, bossDamage, finalDamage, criticalDamageRate, monsterDefenseRate, ignoreDefenseRate, linkLevel, linkLevel2, abilPoint, skillLevel, vSkillLevel, monsterLevel, characterLevel):
     lineDamage = AvgStatAtt (statAtt1, statAtt2) / ((100 + damage)/100) / ((100 + finalDamage)/100) * ((100 + bossDamage + damage + HYPERBOSSDMG + HYPERDAMGE + LinkSkill(linkLevel) + LinkSkill2(linkLevel2) + AbilityDamage(abilPoint)) /100) * CriticalDamageCorrection(criticalDamageRate) * DefenseRateCorrection(monsterDefenseRate, ignoreDefenseRate) * VSkillCoreLevel(vSkillLevel) * ((100 + SkillCoreLevel(skillLevel)) / 100 * (100 + finalDamage) / 100) * LevelCorrection(monsterLevel, characterLevel)
 
     return lineDamage
 
+  
 def CalcMureong(lineDamage, weaponType):
     lineDamage = lineDamage / 100000000
     floor = 49+'이하'
@@ -176,9 +161,8 @@ def CalcMureong(lineDamage, weaponType):
 
     return floor
 
-#########################################################
-################### 여기서부터 수정 #####################
-#########################################################
+
+  
 
 stat2 = float(config['stat2'])
 stat1 = float(config['stat1'])
@@ -187,29 +171,13 @@ bossDamage = float(config['bossDamage'])
 finalDamage = float(config['finalDamage'])
 ignoreDefenseRate = float(config['ignoreDefenseRate'])
 criticalDamage = float(config['criticalDamage'])
-
-#############################################
-# 무릉 세팅
-# 몬스터 레벨 = 200  // 30층대에서 한줄뎀 측정
-# 캐릭터 레벨 = 본인 레벨
-# 몬스터 방어력 = 50
-##############################################
-
-
-# 랩뻥 계산용 몹/ 캐릭터 레벨 입력
 monsterLevel = float(config['monsterLevel'])
 characterLevel = float(config['characterLevel'])
-# 몬스터 방어력 입력
 monsterDefenseRate = float(config['monsterDefenseRate'])
-# 카데나 링크 레벨 
 linkLevel = float(config['linkLevel'])
-# 모법 링크 레벨
 linkLevel2 = float(config['linkLevel2'])
-# 어빌리티 상추뎀 퍼센트
 abilityPoint = float(config['abilityPoint'])
-# 귀참 코강 레벨
 skillLevel = float(config['skillLevel'])
-# 진귀참 코강 레벨
 vSkillLevel = float(config['vSkillLevel'])
 
 
@@ -223,8 +191,3 @@ print(f'진귀참 한줄 데미지 : {lineDamage:.0f}')
 print(f'예상 무릉 층수 : {mureongFloor}')
 
 print('Thanks to 이샛기, 엘크라우치, 하요하이룽, 볼드모트 무릉연구소')
-# 디버그용
-# print ('\n#debug')
-# print(DefenseRateCorrection(monsterDefenseRate, ignoreDefenseRate))
-# print(CriticalDamageCorrection(criticalDamage))
-# print(LevelCorrection(monsterLevel, characterLevel))
