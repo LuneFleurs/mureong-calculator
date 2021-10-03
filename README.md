@@ -1,3 +1,6 @@
-# mureong-calculator
+# 사용법
 
-은월 무릉 층수 계산기
+
+CharacterProperty.env 파일을 메모장으로 열고 값 수정
+
+"재미로만 보세요"
