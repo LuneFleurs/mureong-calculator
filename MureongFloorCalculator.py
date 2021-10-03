@@ -116,48 +116,51 @@ def CalcLineDamage(statAtt1, statAtt2, damage, bossDamage, finalDamage, critical
 def CalcMureong(lineDamage, isGenesis: bool):
     lineDamage = lineDamage / 100000000
     floor = 49
-    if 1.5 < lineDamage :
-        floor = 50
-    elif 1.8 < lineDamage :
-        floor = 51
-    elif 2.5 < lineDamage :
-        floor = 52
-    elif 3.0 < lineDamage :
-        floor = 53
-    elif 3.5 < lineDamage :
-        floor = 54
-    elif 4.0 < lineDamage :
-        floor = 55
-    elif 4.8 < lineDamage :
-        floor = 56
-    elif 5.5 < lineDamage :
-        floor = 57
-    elif 6.2 < lineDamage :
-        floor = 58
-    elif 7.0 < lineDamage :
-        floor = 59
-    elif 8.3 < lineDamage or (7.8 < lineDamage and isGenesis):
-        floor = 60
-    elif 9.0 < lineDamage or (8.6 < lineDamage and isGenesis):
-        floor = 61
-    elif 10.5 < lineDamage or (10.0 < lineDamage and isGenesis):
-        floor = 62
-    elif 11.8 < lineDamage or (11.0 < lineDamage and isGenesis):
-        floor = 63
-    elif 13.0 < lineDamage or (12.2 < lineDamage and isGenesis):
-        floor = 64
-    elif 14.0 < lineDamage or (13.0 < lineDamage and isGenesis):
-        floor = 65
-    elif 14.8 < lineDamage and isGenesis:
-        floor = 66
-    elif 15.8 < lineDamage and isGenesis:
-        floor = 67
-    elif 16.5 < lineDamage and isGenesis:
-        floor = 68
+
+    if 21.0 < lineDamage and isGenesis:
+        floor = 70
     elif 18.0 < lineDamage and isGenesis:
         floor = 69
-    elif 21.0 < lineDamage and isGenesis:
-        floor = 70
+    elif 16.5 < lineDamage and isGenesis:
+        floor = 68
+    elif 15.8 < lineDamage and isGenesis:
+        floor = 67
+    elif 14.8 < lineDamage and isGenesis:
+        floor = 66
+    elif 14.0 < lineDamage or (13.0 < lineDamage and isGenesis):
+        floor = 65
+    elif 13.0 < lineDamage or (12.2 < lineDamage and isGenesis):
+        floor = 64
+    elif 11.8 < lineDamage or (11.0 < lineDamage and isGenesis):
+        floor = 63
+    elif 10.5 < lineDamage or (10.0 < lineDamage and isGenesis):
+        floor = 62
+    elif 9.0 < lineDamage or (8.6 < lineDamage and isGenesis):
+        floor = 61
+    elif 8.3 < lineDamage or (7.8 < lineDamage and isGenesis):
+        floor = 60
+    elif 7.0 < lineDamage :
+        floor = 59
+    elif 6.2 < lineDamage :
+        floor = 58
+    elif 5.5 < lineDamage :
+        floor = 57
+    elif 4.8 < lineDamage :
+        floor = 56
+    elif 4.0 < lineDamage :
+        floor = 55
+    elif 3.5 < lineDamage :
+        floor = 54
+    elif 3.0 < lineDamage :
+        floor = 53
+    elif 2.5 < lineDamage :
+        floor = 52
+    elif 1.8 < lineDamage :
+        floor = 51
+    elif 1.5 < lineDamage :
+        floor = 50
+    else :
+        floor = 49
 
     return str(floor) + '이하'
 
