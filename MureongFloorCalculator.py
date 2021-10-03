@@ -17,7 +17,7 @@
 import os
 from dotenv import dotenv_values
 
-config = dotenv_values("CharacterProperty.env")
+config = dotenv_values("Character.roperty")
 
 ################################################
 # 무기상수 너클
@@ -115,7 +115,7 @@ def CalcLineDamage(statAtt1, statAtt2, damage, bossDamage, finalDamage, critical
   
 def CalcMureong(lineDamage, weaponType):
     lineDamage = lineDamage / 100000000
-    floor = 49+'이하'
+    floor = 49
     if 1.5 < lineDamage :
         floor = 50
     elif 1.8 < lineDamage :
@@ -159,7 +159,7 @@ def CalcMureong(lineDamage, weaponType):
     elif 21.0 < lineDamage and weaponType == True:
         floor = 70
 
-    return floor
+    return str(floor) + '이하'
 
 
   
