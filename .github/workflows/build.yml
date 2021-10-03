@@ -24,7 +24,7 @@ jobs:
       - name: "[WRAPUP] Change Location on Built Executable"
         run: Move-Item -Path .\\dist\\MureongFloorCalculator.exe -Destination .\\MureongFloorCalculator.exe
       - name: "[WRAPUP] Compress Outputs"
-        run: 7z a -tzip MureongCalc.zip MureongFloorCalculator.exe Character.property
+        run: 7z a -tzip MureongCalc.zip MureongFloorCalculator.exe Character.property README.md
       - name: "[UPLOAD] Upload Asset"
         uses: shogo82148/actions-upload-release-asset@v1
         with:
