@@ -191,3 +191,5 @@ print(f'진귀참 한줄 데미지 : {lineDamage:.0f}')
 print(f'예상 무릉 층수 : {mureongFloor}')
 
 print('Thanks to 이샛기, 엘크라우치, 하요하이룽, 볼드모트 무릉연구소')
+
+input()
