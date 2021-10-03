@@ -21,8 +21,10 @@ jobs:
         run: python3 -m pip install pyinstaller
       - name: "[BUILD] Build Executable"
         run: pyinstaller --onefile MureongFloorCalculator.py
+      - name: "[WRAPUP] Change Location on Built Executable"
+        run: Move-Item -Path .\\dist\\MureongFloorCalculator.exe -Destination .\\MureongFloorCalcuator.exe
       - name: "[WRAPUP] Compress Outputs"
-        run: 7z a -tzip MureongCalc.zip dist/MureongFloorCalculator.exe Character.property
+        run: 7z a -tzip MureongCalc.zip MureongFloorCalculator.exe Character.property
       - name: "[UPLOAD] Upload Asset"
         uses: shogo82148/actions-upload-release-asset@v1
         with:
