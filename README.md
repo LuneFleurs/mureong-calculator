@@ -16,9 +16,9 @@
 
 # 은월 무릉 계산기 사용법2
 
-1. Calculator_Auto_Doping.exe 파일과 Character.property.auto.ini을 같은 폴더에 저장
+1. MureongFloorCalculatorAutoDoping.exe 파일과 Character.property.auto.ini을 같은 폴더에 저장
 2. Character.property.ini 파일을 메모장으로 열고 값 수정
-3. Calculator_Auto_Doping.exe 파일 실행
+3. MureongFloorCalculatorAutoDoping.exe 파일 실행
 
 -----------------------------------
 
