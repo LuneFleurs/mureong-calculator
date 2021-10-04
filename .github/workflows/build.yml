@@ -21,16 +21,23 @@ jobs:
         run: python3 -m pip install pyinstaller
       - name: "[BUILD] Build Executable"
         run: pyinstaller --onefile MureongFloorCalculator.py
+      - name: "[WRAPUP] Change Location on Built Executable"
+        run: Move-Item -Path .\\dist\\MureongFloorCalculator.exe -Destination .\\MureongFloorCalculator.exe
+      - name: "[WRAPUP] Compress Outputs"
+        run: 7z a -tzip MureongCalc.zip MureongFloorCalculator.exe Calculator_Auto_Doping.exe Character.property.ini Character.property.auto.ini README.md
       - name: "[BUILD] Build Executable"
         run: pyinstaller --onefile Calculator_Auto_Doping.py
       - name: "[WRAPUP] Change Location on Built Executable"
-        run: Move-Item -Path .\\dist\\MureongFloorCalculator.exe -Destination .\\MureongFloorCalculator.exe
-      - name: "[WRAPUP] Change Location on Built Executable"
         run: Move-Item -Path .\\dist\\Calculator_Auto_Doping.exe -Destination .\\Calculator_Auto_Doping.exe
       - name: "[WRAPUP] Compress Outputs"
-        run: 7z a -tzip MureongCalc.zip MureongFloorCalculator.exe Calculator_Auto_Doping.exe Character.property.ini Character.property.auto.ini README.md
-      - name: "[UPLOAD] Upload Asset"
+        run: 7z a -tzip MureongCalc_auto.zip Calculator_Auto_Doping.exe Character.property.auto.ini README.md
+      - name: "[UPLOAD] Upload Calculator_Manual"
         uses: shogo82148/actions-upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: MureongCalc.zip
+      - name: "[UPLOAD] Upload Calculator_Auto"
+        uses: shogo82148/actions-upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: MureongCalc_auto.zip

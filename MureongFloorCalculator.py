@@ -193,6 +193,6 @@ print('보다 정확한 층수 계산을 위해 50층 이상의 데이터만 유
 print(f'진귀참 한줄 데미지 : {lineDamage:.0f}')
 print(f'예상 무릉 층수 : {mureongFloor}')
 
-print('Thanks to 이샛기, 엘크라우치, 하요하이룽, 타이츠로이드 \nSpecial thanks to 볼드모트 무릉연구소')
+print('Thanks to 이샛기, 엘크라우치, 하요하이룽, 타이츠로이드, 놀공이 \nSpecial thanks to 볼드모트 무릉연구소')
 
 input()
