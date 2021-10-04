@@ -157,7 +157,7 @@ def CalcStatAttack (mainStat, subStat, attack, damage, finalDamage, attackPercen
     return statAttack
   
 def CalcLineDamage(statAtt1, statAtt2, damage, bossDamage, finalDamage, criticalDamageRate, monsterDefenseRate, ignoreDefenseRate, linkLevel, linkLevel2, abilPoint, skillLevel, vSkillLevel, monsterLevel, characterLevel):
-    lineDamage = AvgStatAtt (statAtt1, statAtt2) / ((100 + damage + nobleDamage + 10)/100) / ((100 + finalDamage)/100) * ((100 + bossDamage + damage + HYPERBOSSDMG + nobleBossDamage + 20 + HYPERDAMGE + LinkSkill(linkLevel) + LinkSkill2(linkLevel2) + AbilityDamage(abilPoint)) /100) * CriticalDamageCorrection(criticalDamageRate) * DefenseRateCorrection(monsterDefenseRate, ignoreDefenseRate) * VSkillCoreLevel(vSkillLevel) * ((100 + SkillCoreLevel(skillLevel)) / 100 * (100 + finalDamage) / 100) * LevelCorrection(monsterLevel, characterLevel)
+    lineDamage = AvgStatAtt (statAtt1, statAtt2) / ((100 + damage + nobleDamage + 10)/100) / ((100 + finalDamage)/100) * ((100 + bossDamage + damage + nobleDamage + 10 + HYPERBOSSDMG + nobleBossDamage + 20 + HYPERDAMGE + LinkSkill(linkLevel) + LinkSkill2(linkLevel2) + AbilityDamage(abilPoint)) /100) * CriticalDamageCorrection(criticalDamageRate) * DefenseRateCorrection(monsterDefenseRate, ignoreDefenseRate) * VSkillCoreLevel(vSkillLevel) * ((100 + SkillCoreLevel(skillLevel)) / 100 * (100 + finalDamage) / 100) * LevelCorrection(monsterLevel, characterLevel)
 
     return lineDamage
 
@@ -239,7 +239,7 @@ attack = CalcTotalAttack(stat2, mainStat, subStat, damage, finalDamage, attackPe
 calcedStatAttack = CalcStatAttack(mainStat, subStat, attack, damage, finalDamage, attackPercent)
 frontCalcedStatAttack = calcedStatAttack * 90 / 100
 
-lineDamage = CalcLineDamage(stat1, stat2, damage, bossDamage, finalDamage, criticalDamage, monsterDefenseRate, ignoreDefenseRate, linkLevel, linkLevel2, abilityPoint, skillLevel, vSkillLevel, monsterLevel, characterLevel)
+lineDamage = CalcLineDamage(frontCalcedStatAttack, calcedStatAttack, damage, bossDamage, finalDamage, criticalDamage, monsterDefenseRate, ignoreDefenseRate, linkLevel, linkLevel2, abilityPoint, skillLevel, vSkillLevel, monsterLevel, characterLevel)
 
 mureongFloor = CalcMureong(lineDamage, WEAPONETYPE)
 
