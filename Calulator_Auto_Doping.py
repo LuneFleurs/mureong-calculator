@@ -152,7 +152,7 @@ def CalcTotalAttack (statAttack, mainStat, subStat, damage, finalDamage, attackP
 # 방무 : 노블 30%
 # 공퍼 : 영메 4% o
 def CalcStatAttack (mainStat, subStat, attack, damage, finalDamage, attackPercent):
-    statAttack = (((mainStat+30)*4 + subStat)/100) * (attack + 210) * ((100+damage + 10 + nobleDamage) / 100) * ((100 + finalDamage)/100) * ((104+attackPercent)/100) * WEAPONRATE * JOBCORRECTION
+    statAttack = (((mainStat+30)*4 + subStat)/100) * (attack + 180) * ((100+damage + 10 + nobleDamage) / 100) * ((100 + finalDamage)/100) * ((104+attackPercent)/100) * WEAPONRATE * JOBCORRECTION
 
     return statAttack
   
