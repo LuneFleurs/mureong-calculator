@@ -21,10 +21,10 @@ jobs:
         run: python3 -m pip install pyinstaller
       - name: "[BUILD] Build Executable"
         run: pyinstaller --onefile MureongFloorCalculator.py
-      - name: "[WRAPUP] Change Location on Built Executable"
-        run: Move-Item -Path .\\dist\\MureongFloorCalculator.exe -Destination .\\MureongFloorCalculator.exe
       - name: "[BUILD] Build Executable"
         run: pyinstaller --onefile Calculator_Auto_Doping.py
+      - name: "[WRAPUP] Change Location on Built Executable"
+        run: Move-Item -Path .\\dist\\MureongFloorCalculator.exe -Destination .\\MureongFloorCalculator.exe
       - name: "[WRAPUP] Change Location on Built Executable"
         run: Move-Item -Path .\\dist\\Calculator_Auto_Doping.exe -Destination .\\Calculator_Auto_Doping.exe
       - name: "[WRAPUP] Compress Outputs"
