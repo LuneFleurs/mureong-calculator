@@ -25,6 +25,8 @@ jobs:
         run: Move-Item -Path .\\dist\\MureongFloorCalculator.exe -Destination .\\MureongFloorCalculator.exe
       - name: "[WRAPUP] Compress Outputs"
         run: 7z a -tzip MureongCalc.zip MureongFloorCalculator.exe Calculator_Auto_Doping.exe Character.property.ini Character.property.auto.ini README.md
+      - name: "[SETUP] Install PyInstaller"
+        run: python3 -m pip install pyinstaller
       - name: "[BUILD] Build Executable"
         run: pyinstaller --onefile Calculator_Auto_Doping.py
       - name: "[WRAPUP] Change Location on Built Executable"
