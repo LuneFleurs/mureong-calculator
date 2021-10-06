@@ -81,7 +81,7 @@ def CriticalDamageCorrection (crtDmg):
 
 # 스탯창에 보이지 않는 코강 방무 적용
 def DefenseRateCorrection (monsterDefenseRate, ignoreDef):
-    defense = (1 - (1- ignoreDef/100)  * (1 - SKILLIGNORE/100) * (1 - VCOREIGNORE/100))
+    defense = (1 - (1- ignoreDef/100)  * (1 - SKILLIGNORE/100) * (1 - VCOREIGNORE/100) * (1 - nobleIgnoreDefense/100))
     return (100 - (monsterDefenseRate - (monsterDefenseRate * defense))) /100
 
 # 랩뻥 계산
@@ -147,17 +147,17 @@ def CalcTotalAttack (statAttack, mainStat, subStat, damage, finalDamage, attackP
 # 주스텟 : 10단계 30 -> 30 o
 # 공격력 : 붕어빵 30, 익스 레드30, 우뿌30, 길축 30 유힘 30 슈퍼파워 30, 유힘 30 -> 210 o
 # 크뎀 : 노블 30% o
-# 데미지 : 노블 30% 고대비 10% o
+# 데미지 : 노블 30% 고대비 10% 다이스 20%o
 # 보공 : 노블 30%  반빨별 20% o
-# 방무 : 노블 30%
+# 방무 : 노블 30% o
 # 공퍼 : 영메 4% o
 def CalcStatAttack (mainStat, subStat, attack, damage, finalDamage, attackPercent):
-    statAttack = (((mainStat+30)*4 + subStat)/100) * (attack + 180) * ((100+damage + 10 + nobleDamage) / 100) * ((100 + finalDamage)/100) * ((104+attackPercent)/100) * WEAPONRATE * JOBCORRECTION
+    statAttack = (((mainStat+30)*4 + subStat)/100) * (attack + 180) * ((100+damage + 30 + nobleDamage) / 100) * ((100 + finalDamage)/100) * ((104+attackPercent)/100) * WEAPONRATE * JOBCORRECTION
 
     return statAttack
   
 def CalcLineDamage(statAtt1, statAtt2, damage, bossDamage, finalDamage, criticalDamageRate, monsterDefenseRate, ignoreDefenseRate, linkLevel, linkLevel2, abilPoint, skillLevel, vSkillLevel, monsterLevel, characterLevel):
-    lineDamage = AvgStatAtt (statAtt1, statAtt2) / ((100 + damage + nobleDamage + 10)/100) / ((100 + finalDamage)/100) * ((100 + bossDamage + damage + nobleDamage + 10 + HYPERBOSSDMG + nobleBossDamage + 20 + HYPERDAMGE + LinkSkill(linkLevel) + LinkSkill2(linkLevel2) + AbilityDamage(abilPoint)) /100) * CriticalDamageCorrection(criticalDamageRate) * DefenseRateCorrection(monsterDefenseRate, ignoreDefenseRate) * VSkillCoreLevel(vSkillLevel) * ((100 + SkillCoreLevel(skillLevel)) / 100 * (100 + finalDamage) / 100) * LevelCorrection(monsterLevel, characterLevel)
+    lineDamage = AvgStatAtt (statAtt1, statAtt2) / ((100 + damage + nobleDamage + 30)/100) / ((100 + finalDamage)/100) * ((100 + bossDamage + damage + nobleDamage + 10 + HYPERBOSSDMG + nobleBossDamage + 20 + HYPERDAMGE + LinkSkill(linkLevel) + LinkSkill2(linkLevel2) + AbilityDamage(abilPoint)) /100) * CriticalDamageCorrection(criticalDamageRate) * DefenseRateCorrection(monsterDefenseRate, ignoreDefenseRate) * VSkillCoreLevel(vSkillLevel) * ((100 + SkillCoreLevel(skillLevel)) / 100 * (100 + finalDamage) / 100) * LevelCorrection(monsterLevel, characterLevel)
 
     return lineDamage
 
